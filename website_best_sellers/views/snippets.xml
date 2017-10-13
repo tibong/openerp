@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+	<data>
+			
+			<!-- <template id="snippet_testimonial" name="Testimonial snippet">
+			 
+			</template> -->
+			<template id="custom_css_and_js_editor" inherit_id="website.assets_editor" name="Custom CSS and JS Editor">
+
+			    <xpath expr="//link[last()]" position="after">
+
+			        <!-- your custom css goes here -->
+
+			    </xpath>
+
+			    <xpath expr="//script[last()]" position="after">
+
+			       <script type="text/javascript" src="/website_best_sellers/static/src/js/categories.js"/>
+
+			    </xpath>
+
+			</template>
+
+			<template id="custom_css_and_js" inherit_id="website.assets_frontend" name="Custom CSS and JS">
+
+				<xpath expr="." position="inside">
+						 <script type="text/javascript" src="/website_best_sellers/static/src/js/products.js"/>
+			    </xpath>
+
+			</template>
+			<template id="snippets" name="Shit" inherit_id="website.snippets">
+			  <xpath expr="//div[@id='snippet_structure']" position="inside">
+					<!-- Cannot call T-tags Except T-Field, Call Template using JS -->
+					<div>
+
+						<div class="oe_snippet_thumbnail">
+							<img class="oe_snippet_thumbnail_img" src="website_best_sellers/static/src/img/mango.jpg" alt=""/>
+							<span class="oe_snippet_thumbnail_title">
+								Shit Show
+							</span>
+						</div>
+
+						<section class="oe_snippet_body website_best_seller" style="background-color:#f7f7f7;">
+							<div class="parametricTemplate mt16 mb16">
+								<!-- Call  -->
+							</div>
+						    
+						</section>
+					</div>
+			  </xpath>
+
+			   <xpath expr="//div[@id='snippet_options']" position="inside">
+			    <div data-snippet-option-id='best_seller_option' data-selector=".website_best_seller" data-selector-siblings="p, h1, h2, h3, blockquote, .well, .panel, .oe_share" data-selector-children=".content"> 
+			    	<li class="dropdown-submenu">
+			        <a href="#">Your Option</a>
+			        <ul class="dropdown-menu"> 
+			          <li data-select_class="opt_shadow"><a>Shadow Images</a></li>
+			          <li data-select_class="opt_grey_bg"><a>Grey Bg</a></li>
+			          <li data-select_class=""><a>None</a></li>
+			        </ul>
+			      </li>
+			    </div>
+			  </xpath>
+
+
+			</template>
+
+			<template id="display_categories">
+				<div class="container text-center">
+						      <div class="row" style="height: 56vh;background-color:#fff;position: relative;">
+						      	<div class="header_best_sellers" style="height:20%;position: relative;">
+						      		<h3 style="float:left">Best Sellers</h3>
+						      		<t t-set="categories" t-value="request.env['website.best.sellers'].search([])"/>
+									<ul style="float:right;list-style:none">
+						      			<!-- <t t-call='website_best_sellers.display_categories'/> -->
+						      			<li class = "display_categories_list" t-foreach="categories" t-as="category" style="display:inline-block;float:left">
+								     		<!-- <a href="#" ><t t-esc="category.category"/></a> -->
+								     		<a href="#" t-attf-data-id="#{category.category_id.id}"><t t-esc="category.category"/></a>
+								     	</li>
+						      		</ul>
+						      	</div>
+						      	<div class="content_best_sellers" style="height:80%;position: absolute;overflow:scroll;overflow-y: hidden;width: -webkit-fill-available;">
+<!-- <div class="product-block" style="margin:0 20px;display:inline-block;float:left"><h3 class="product-name"></h3><img class="product-image" src="" alt="" style="height:100px"/></div> -->
+						      	</div>
+						      </div>
+				</div>
+			     	
+			</template>
+			<!-- 
+			<template id="display_products"> -->
+			     	
+			<!-- </template> -->
+			<!-- <template id="snippet_testimonial_opt" name="Snippet Testimonial Options" inherit_id="website.snippets"> -->
+			 
+		<!-- 	 </template> -->
+
+		
+
+	</data>
+</openerp>

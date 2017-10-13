@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="action_best_seller_menu" model="ir.actions.act_window">
+            <field name="name">Website BestSeller Settings</field>
+            <field name="res_model">website.best.sellers</field>
+            <field name="view_mode">list</field>
+        </record>
+
+        <record id="best_seller" model="ir.ui.view">
+            <field name="name">best.seller</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group[@string='Menu']" position="after">
+                        <group string="Best Sellers">
+                            <button type="action"
+                                name="%(action_best_seller_menu)d"
+                                string="Configure Best Sellers" class="oe_link"/>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+        <record id="website_best_sellers_tree" model="ir.ui.view">
+            <field name="name">website.best.sellers.tree</field>
+            <field name="model">website.best.sellers</field>
+           <!--  <field name="field_parent">child_id</field> -->
+            <field name="arch" type="xml">
+                <tree string="Website menu" editable="bottom">
+                    <field name="category"/>
+                    <field name="category_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        
+
+    </data>
+</openerp>
